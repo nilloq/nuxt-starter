@@ -89,6 +89,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: nuxt-starter-production
     #needs: build
     steps:
       - name: Checkout
@@ -113,7 +114,6 @@ jobs:
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
-        environment: nuxt-starter-production
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
