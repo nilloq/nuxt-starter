@@ -1,0 +1,91 @@
+/* Inputs */
+input {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  line-height: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  border: solid 1px #cccccc;
+  transition: border 0.3s ease;
+  --at-apply: bg-input;
+}
+
+/* Disable arrow in number inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input::placeholder {
+  --at-apply: color-secondary;
+}
+
+input:focus-visible {
+  outline: 2px solid;
+  --at-apply: border-color-primary;
+  --at-apply: outline-color-primary;
+}
+
+input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+input.error {
+  --at-apply: outline-color-danger;
+  --at-apply: border-color-danger;
+  padding-right: 1.75rem;
+  background: no-repeat right url(../img/error-outline-rounded.svg);
+  --at-apply: bg-input;
+}
+
+/* Style previous label*/
+label + input {
+  margin-top: 0.25rem;
+}
+
+label:has(+ input:disabled) {
+  opacity: 0.4;
+}
+
+label:has(+ input.error) {
+  --at-apply: color-danger;
+}
+
+/* Target error */
+input.error + .input-error {
+  display: flex;
+}
+
+/* -------------------------------------- */
+/* Sytling DropdownSelect input component */
+/* -------------------------------------- */
+
+/* Style previous label*/
+label + .dropdown-select {
+  margin-top: 0.25rem;
+}
+
+label:has(+ .dropdown-select:disabled) {
+  opacity: 0.4;
+}
+
+label:has(+ .dropdown-select .error) {
+  --at-apply: color-danger;
+}
+
+/* Target error */
+.dropdown-select.error + .input-error {
+  display: flex;
+}

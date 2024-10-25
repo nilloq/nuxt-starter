@@ -1,0 +1,70 @@
+{
+  // Enable the ESlint flat config support
+  "eslint.useFlatConfig": true,
+
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off" },
+    { "rule": "format/*", "severity": "off" },
+    { "rule": "*-indent", "severity": "off" },
+    { "rule": "*-spacing", "severity": "off" },
+    { "rule": "*-spaces", "severity": "off" },
+    { "rule": "*-order", "severity": "off" },
+    { "rule": "*-dangle", "severity": "off" },
+    { "rule": "*-newline", "severity": "off" },
+    { "rule": "*quotes", "severity": "off" },
+    { "rule": "*semi", "severity": "off" }
+  ],
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml"
+  ],
+  "i18n-ally.localesPaths": [
+    "app/lang"
+  ],
+  "i18n-ally.keystyle": "nested",
+
+  // VS code color theme
+  "peacock.color": "#19a7ce",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#34c0e6",
+    "activityBar.activeBorder": "#ff60cf",
+    "activityBar.background": "#34c0e6",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#c718a1",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "sash.hoverBorder": "#34c0e6",
+    "statusBar.background": "#19a7ce",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#1382a0",
+    "statusBarItem.remoteBackground": "#19a7ce",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#19a7ce",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#19a7ce99",
+    "titleBar.inactiveForeground": "#15202b99",
+    "commandCenter.border": "#15202b99"
+  }
+}

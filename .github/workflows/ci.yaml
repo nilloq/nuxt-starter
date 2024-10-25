@@ -1,0 +1,119 @@
+name: CI/CD for Nuxt starter
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - uses: pnpm/action-setup@v4
+  #       name: Install pnpm
+  #       with:
+  #         run_install: false
+
+  #     - name: Install Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: 'pnpm'
+
+  #     - name: Install dependencies
+  #       run: pnpm install
+
+  #     - name: Run linter
+  #       run: pnpm lint
+
+  # test:
+  #   runs-on: ubuntu-latest
+  #   needs: lint
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - uses: pnpm/action-setup@v4
+  #       name: Install pnpm
+  #       with:
+  #         run_install: false
+
+  #     - name: Install Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: 'pnpm'
+
+  #     - name: Install dependencies
+  #       run: pnpm install
+
+  #     - name: Run tests
+  #       run: pnpm test
+
+  # build:
+  #   runs-on: ubuntu-latest
+  #   needs: test
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - uses: pnpm/action-setup@v4
+  #       name: Install pnpm
+  #       with:
+  #         run_install: false
+
+  #     - name: Install Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: 'pnpm'
+
+  #     - name: Install dependencies
+  #       run: pnpm install
+
+  #     - name: Build project
+  #       run: pnpm build
+
+  #     - name: Upload build artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: nuxt_starter_production
+  #         include-hidden-files: true
+  #         path: dist/
+
+  deploy:
+    runs-on: ubuntu-latest
+    #needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+         with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=nuxt-starter

@@ -1,0 +1,95 @@
+{
+  "HOME": {
+    "WELCOME": "Bienvenue au template de démarrage Nuxt !",
+    "LINKS": {
+      "ARTICLES": "Voir les articles",
+      "TODOS": "Voir les tâches"
+    }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© A nuxt starter template by Nilloq - 2024"
+  },
+  "HEADER": {
+    "LANG": {
+      "ARIA": "Sélection de la langue",
+      "FR": "FR",
+      "EN": "EN"
+    },
+    "TITLE": "Nuxt starter"
+  },
+  "POSTS": {
+    "TITLE": "Liste des articles"
+  },
+  "GENERAL": {
+    "THEME": {
+      "DARK": {
+        "ARIA": "Basculer en mode sombre"
+      },
+      "LIGHT": {
+        "ARIA": "Basculer en mode clair"
+      }
+    },
+    "ERROR": {
+      "NETWORK": "Erreur réseau, veuillez vérifier votre connexion! ",
+      "UNKNWON": "Erreur inconnue, veuillez réessayer plus tard..."
+    },
+    "LOADING": "Chargement...",
+    "CLOSE": "Fermer",
+    "EMAIL": "Email",
+    "PASSWORD": "Mot de passe",
+    "CANCEL": "Annuler",
+    "CONFIRM": "Confirmer",
+    "PROFILE": "Profil",
+    "NAME": "Nom",
+    "SAVE": "Enregistrer",
+    "DELETE": "Supprimer",
+    "OR": "ou"
+  },
+  "LOGIN": {
+    "SIGN_IN": "Connexion",
+    "SIGN_IN_GOOGLE": "Connexion avec Google",
+    "SIGN_UP": "S'inscrire",
+    "PASSWORD_FORGOTTEN": "Mot de passe oublié ?",
+    "NO_ACCOUNT": "Pas encore de compte ?",
+    "TITLE": "Connexion",
+    "DESCRIPTION": "Saisissez votre email pour accéder à votre compte",
+    "SIGN_IN_GITHUB": "Connexion avec Github",
+    "EMAIL_PLACEHOLDER": "mail{'@'}domain.com"
+  },
+  "LOGOUT": {
+    "TITLE": "Déconnexion",
+    "DESCRIPTION": "Etes-vous sûr de voilour vous déconnecter ?"
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "INFORMATION": {
+      "TITLE": "Informations du profil",
+      "DESCRIPTION": "Mettez à jour vos informations de profil et l'adresse e-mail de votre compte."
+    },
+    "DELETE": {
+      "TITLE": "Suppression du compte",
+      "DESCRIPTION": "Supprimer définitivement votre compte.",
+      "BUTTON": "Supprimer mon compte",
+      "WARNING": "La suppression de votre compte est irréversible. Toutes vos données seront perdues. Êtes-vous sûr de vouloir supprimer votre compte ?",
+      "CONFIRM": {
+        "TITLE": "Confirmer la suppression du compte",
+        "DESCRIPTION": "Cette action est irréversible et supprimera toutes vos données de manière permanente."
+      },
+      "SUCCESS": "Compte supprimé avec succès",
+      "ERROR": "Une erreur est survenue lors de la suppression"
+    },
+    "AUTHENTICATION": {
+      "TITLE": "Authentification",
+      "DESCRIPTION": "Configurez vos fournisseurs d'authentification.",
+      "EXPLANATION": "Associez un ou plusieurs des fournisseurs suivants à votre compte pour y accéder en les utilisant.",
+      "GOOGLE": {
+        "CONNECT": "Connecter Google",
+        "REMOVE": "Supprimer Google"
+      },
+      "GITHUB": {
+        "REMOVE": "Supprimer Github",
+        "CONNECT": "Connecter Github"
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "HOME": {
+    "WELCOME": "Welcome to Nuxt starter template !",
+    "LINKS": {
+      "ARTICLES": "Show articles",
+      "TODOS": "Show todos"
+    }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© A nuxt starter template by Nilloq - 2024"
+  },
+  "HEADER": {
+    "LANG": {
+      "ARIA": "Language selection",
+      "FR": "FR",
+      "EN": "EN"
+    },
+    "TITLE": "Nuxt starter"
+  },
+  "POSTS": {
+    "TITLE": "List of articles"
+  },
+  "GENERAL": {
+    "THEME": {
+      "DARK": {
+        "ARIA": "Switch to dark mode"
+      },
+      "LIGHT": {
+        "ARIA": "Switch to light mode"
+      }
+    },
+    "ERROR": {
+      "NETWORK": "Network error, please check your connection",
+      "UNKNWON": "An error occurs, please retry later..."
+    },
+    "LOADING": "Loading...",
+    "CLOSE": "Close",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CANCEL": "Cancel",
+    "CONFIRM": "Confirm",
+    "PROFILE": "Profile",
+    "NAME": "Name",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+    "OR": "or"
+  },
+  "LOGIN": {
+    "SIGN_IN": "Login",
+    "SIGN_IN_GOOGLE": "Sign in with Google",
+    "SIGN_UP": "Sign up",
+    "PASSWORD_FORGOTTEN": "Forgot your passord?",
+    "NO_ACCOUNT": "Don't have an account?",
+    "TITLE": "Login",
+    "DESCRIPTION": "Enter your email below to login to your account",
+    "SIGN_IN_GITHUB": "Sign in with Github",
+    "EMAIL_PLACEHOLDER": "mail{'@'}domain.com"
+  },
+  "LOGOUT": {
+    "TITLE": "Logout",
+    "DESCRIPTION": "Are you sure you want ot logout?"
+  },
+  "PROFILE": {
+    "TITLE": "Profile",
+    "INFORMATION": {
+      "TITLE": "Profile information",
+      "DESCRIPTION": "Update your account's profile information and email address."
+    },
+    "DELETE": {
+      "TITLE": "Delete Account",
+      "DESCRIPTION": "Permanently delete your account.",
+      "BUTTON": "Delete account",
+      "WARNING": "Deleting your account is irreversible. All your data will be lost. Are you sure you want to delete your account?",
+      "CONFIRM": {
+        "TITLE": "Confirm Account deletion",
+        "DESCRIPTION": "This action is irreversible and will delete all your data permanently."
+      },
+      "SUCCESS": "Account successfully deleted",
+      "ERROR": "An error occurred while deleting your account"
+    },
+    "AUTHENTICATION": {
+      "TITLE": "Authentication",
+      "DESCRIPTION": "Configure your authentication providers.",
+      "EXPLANATION": "Link one or more of the following providers to your account to access it using them.",
+      "GOOGLE": {
+        "CONNECT": "Connect Google",
+        "REMOVE": "Remove Google"
+      },
+      "GITHUB": {
+        "REMOVE": "Remove Github",
+        "CONNECT": "Connect Github"
+      }
+    }
+  }
+}
