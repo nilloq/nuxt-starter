@@ -80,9 +80,9 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-09-16',
 
-  // hub: {
-  //   database: true,
-  // },
+  hub: {
+    database: true,
+  },
 
   eslint: {
     config: {
