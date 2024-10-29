@@ -111,7 +111,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: nnuxt-starter-production
+          name: nuxt-starter-production
           path: dist/
 
       - name: Deploy with nuxthub
