@@ -103,6 +103,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: nuxt-starter-production
     needs: build
     steps:
       - name: Checkout
