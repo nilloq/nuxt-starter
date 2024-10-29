@@ -56,9 +56,10 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    needs: test
+    environment: nuxt-starter-production
+    needs: tests
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -78,21 +79,23 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-    
-
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build project
-        run: pnpm build
+      - name:  Deploy with nuxthub
+        run: npx nuxthub deploy
+        env:
+          NUXT_HUB_PROJECT_KEY: ${{ secrets.NUXT_HUB_PROJECT_KEY}}
+          NUXT_HUB_USER_TOKEN: ${{ secrets.NUXT_HUB_USER_TOKEN }}    
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -100,26 +103,6 @@ jobs:
           name: nuxt-starter-production
           include-hidden-files: true
           path: dist/
-
-  deploy:
-    runs-on: ubuntu-latest
-    environment: nuxt-starter-production
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: nuxt-starter-production
-          path: dist/
-
-      - name: Deploy with nuxthub
-        run: npx nuxthub deploy
-        env:
-          NUXT_HUB_PROJECT_KEY: ${{ secrets.NUXT_HUB_PROJECT_KEY }}
-          NUXT_HUB_USER_TOKEN: ${{ secrets.NUXT_HUB_USER_TOKEN }}
 
   # deploy:
   #   runs-on: ubuntu-latest
