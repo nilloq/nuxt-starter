@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-  middleware: 'auth',
+  middleware: 'verified',
 })
 
 const loading = ref(false)

@@ -58,7 +58,7 @@
   },
   "LOGOUT": {
     "TITLE": "Logout",
-    "DESCRIPTION": "Are you sure you want ot logout?"
+    "DESCRIPTION": "Are you sure you want to logout?"
   },
   "PROFILE": {
     "TITLE": "Profile",
@@ -90,6 +90,10 @@
         "REMOVE": "Remove Github",
         "CONNECT": "Connect Github"
       }
+    },
+    "PROVIDERS": {
+      "REMOVE": "Disconnected from {provider}",
+      "LAST_PROVIDER": "You must have at least one provider linked"
     }
   }
 }

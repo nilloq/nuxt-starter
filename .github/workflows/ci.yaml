@@ -9,62 +9,127 @@ on:
       - main
 
 jobs:
-  # lint:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run linter
+        run: pnpm lint
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run tests
+        run: pnpm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-    
+
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuxt-starter-production
+          include-hidden-files: true
+          path: dist/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nnuxt-starter-production
+          path: dist/
+
+      - name: Deploy with nuxthub
+        run: npx nuxthub deploy
+        env:
+          NUXT_HUB_PROJECT_KEY: ${{ secrets.NUXT_HUB_PROJECT_KEY }}
+          NUXT_HUB_USER_TOKEN: ${{ secrets.NUXT_HUB_USER_TOKEN }}
+
+  # deploy:
   #   runs-on: ubuntu-latest
+  #   environment: nuxt-starter-production
+  #   needs: build
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v4
 
-  #     - uses: pnpm/action-setup@v4
-  #       name: Install pnpm
-  #       with:
-  #         run_install: false
-
-  #     - name: Install Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20
-  #         cache: 'pnpm'
-
-  #     - name: Install dependencies
-  #       run: pnpm install
-
-  #     - name: Run linter
-  #       run: pnpm lint
-
-  # test:
-  #   runs-on: ubuntu-latest
-  #   needs: lint
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-
-  #     - uses: pnpm/action-setup@v4
-  #       name: Install pnpm
-  #       with:
-  #         run_install: false
-
-  #     - name: Install Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20
-  #         cache: 'pnpm'
-
-  #     - name: Install dependencies
-  #       run: pnpm install
-
-  #     - name: Run tests
-  #       run: pnpm test
-
-  # build:
-  #   runs-on: ubuntu-latest
-  #   needs: test
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-
-  #     - uses: pnpm/action-setup@v4
-  #       name: Install pnpm
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v4
   #       with:
   #         run_install: false
 
@@ -80,41 +145,9 @@ jobs:
   #     - name: Build project
   #       run: pnpm build
 
-  #     - name: Upload build artifact
-  #       uses: actions/upload-artifact@v4
+  #     - name: Deploy to Cloudflare
+  #       uses: cloudflare/wrangler-action@v3
   #       with:
-  #         name: nuxt_starter_production
-  #         include-hidden-files: true
-  #         path: dist/
-
-  deploy:
-    runs-on: ubuntu-latest
-    environment: nuxt-starter-production
-    #needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build project
-        run: pnpm build
-
-      - name: Deploy to Cloudflare
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=nuxt-starter
+  #         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  #         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  #         command: pages deploy dist --project-name=nuxt-starter

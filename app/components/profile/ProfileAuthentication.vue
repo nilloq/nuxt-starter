@@ -1,8 +1,36 @@
 <script setup lang="ts">
-const { user } = useUserSession()
+import { FetchError } from 'ofetch'
+
+const { user, fetch: fetchUserSession } = useUserSession()
+const { t } = useI18n()
+const toast = useToast()
 
 const isGoogleConnected = computed(() => Boolean(user.value?.googleId))
 const isGithubConnected = computed(() => Boolean(user.value?.githubId))
+
+async function connect(providerName: 'github' | 'google') {
+  window.open(`/api/auth/${providerName}`, '_self')
+}
+
+async function disconnect(providerName: 'github' | 'google') {
+  try {
+    await $fetch(`/api/user/providers/${providerName}`, {
+      method: 'DELETE',
+    })
+
+    await fetchUserSession()
+
+    toast.success(t('PROFILE.PROVIDERS.REMOVE', { provider: providerName }))
+  }
+  catch (error) {
+    if (error instanceof FetchError && error.data.statusCode === 400) {
+      toast.error(t('PROFILE.PROVIDERS.LAST_PROVIDER'))
+    }
+    else {
+      toast.error(t('GENERAL.ERROR.UNKNWON'))
+    }
+  }
+}
 </script>
 
 <template>
@@ -17,14 +45,20 @@ const isGithubConnected = computed(() => Boolean(user.value?.githubId))
       </p>
       <!-- With Google -->
       <div class="col-span-4">
-        <button class="btn-secondary w-full">
+        <button
+          class="btn-secondary w-full"
+          @click="isGoogleConnected ? disconnect('google') : connect('google')"
+        >
           <span class="i-carbon-logo-google mr-1" />
           {{ isGoogleConnected ? $t('PROFILE.AUTHENTICATION.GOOGLE.REMOVE') : $t('PROFILE.AUTHENTICATION.GOOGLE.CONNECT') }}
         </button>
       </div>
       <!-- With Github -->
       <div class="col-span-4">
-        <button class="btn-secondary w-full">
+        <button
+          class="btn-secondary w-full"
+          @click="isGithubConnected ? disconnect('github') : connect('github')"
+        >
           <span class="i-carbon-logo-github mr-1" />
           {{ isGithubConnected ? $t('PROFILE.AUTHENTICATION.GITHUB.REMOVE') : $t('PROFILE.AUTHENTICATION.GITHUB.CONNECT') }}
         </button>

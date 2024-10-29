@@ -36,6 +36,7 @@ export default defineOAuthGoogleEventHandler({
         email: user.email,
         avatar: user.avatar,
         verifiedAt: user.verifiedAt,
+        githubId: user.githubId,
         googleId: oauthUser.sub,
       })
       return sendRedirect(event, '/todos')

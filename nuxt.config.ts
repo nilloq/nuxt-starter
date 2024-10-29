@@ -73,6 +73,7 @@ export default defineNuxtConfig({
     public: {
       webappVersion: `${version}-dev`, // Used in the footer, and overrided by the CI/CD in STAGING / PROD(see openshift/os-pre-apply.sh
     },
+    DB: 'DB',
   },
   future: {
     compatibilityVersion: 4,

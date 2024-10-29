@@ -58,7 +58,7 @@
   },
   "LOGOUT": {
     "TITLE": "Déconnexion",
-    "DESCRIPTION": "Etes-vous sûr de voilour vous déconnecter ?"
+    "DESCRIPTION": "Etes-vous sûr de vouloir vous déconnecter ?"
   },
   "PROFILE": {
     "TITLE": "Profil",
@@ -90,6 +90,10 @@
         "REMOVE": "Supprimer Github",
         "CONNECT": "Connecter Github"
       }
+    },
+    "PROVIDERS": {
+      "REMOVE": "Déconnecté de {provider}",
+      "LAST_PROVIDER": "Vous devez avoir au moins un fournisseur lié"
     }
   }
 }

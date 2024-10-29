@@ -10,6 +10,10 @@ const avatarStyle = computed(() => ({
   'width': `${size}px`,
   'min-width': `${size}px`,
 }))
+
+const fallbackStyle = computed(() => ({
+  'font-size': `${size / 2}px`,
+}))
 </script>
 
 <template>
@@ -24,7 +28,8 @@ const avatarStyle = computed(() => ({
     />
     <AvatarFallback
       :delay-ms="600"
-      class="h-full w-full flex items-center justify-center bg-primary text-[15px] text-white font-medium leading-1"
+      class="h-full w-full flex items-center justify-center bg-primary text-white font-medium leading-1"
+      :style="fallbackStyle"
     >
       {{ alt[0]?.toUpperCase() }}
     </AvatarFallback>

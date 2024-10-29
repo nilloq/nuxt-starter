@@ -21,7 +21,7 @@ const config = useRuntimeConfig()
             class="btn-icon"
             title="Github"
             hover="bg-active"
-            href="https://github.com/nilloq/nuxt-unocss"
+            href="https://github.com/nilloq/nuxt-starter"
             target="_blank"
           >
             <div class="i-carbon-logo-github w-6 h-6" />

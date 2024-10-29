@@ -5,7 +5,7 @@ declare module '#auth-utils' {
     email: string
     avatar: string | null
     githubId?: number | null
-    googleId?: number | null
+    googleId?: string | null
     verifiedAt: string | null
     emailToVerify?: string | null
   }

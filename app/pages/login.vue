@@ -1,5 +1,25 @@
+<script lang="ts" setup>
+import { useSession } from 'h3'
+
+const message = useState<string>('message')
+if (import.meta.server) {
+  const session = await useSession(useRequestEvent()!, {
+    password: useRuntimeConfig().session.password,
+  })
+
+  message.value = session.data.message
+
+  await session.update({
+    message: '',
+  })
+}
+</script>
+
 <template>
   <div class="m-auto p-8 container">
+    <p v-if="message">
+      {{ message }}
+    </p>
     <div class="mx-auto max-w-sm rounded-lg p-4 border-base">
       <h1 class="mb-4 text-2xl">
         {{ $t('LOGIN.TITLE') }}

@@ -18,9 +18,9 @@ const state = reactive({
       <div class="col-span-4 md:col-span-2">
         <div class="flex flex-col items-center gap-4">
           <AppAvatar :src="user?.avatar" :alt="state.name" :size="96" />
-          <button class="btn-secondary btn-small">
+          <!-- <button class="btn-secondary btn-small">
             Remove
-          </button>
+          </button> -->
         </div>
       </div>
       <!-- name and email -->
@@ -31,18 +31,24 @@ const state = reactive({
           v-model="state.name"
           type="text"
           class="mb2"
+          disabled
         >
         <label for="email" class="fw-bold">{{ $t('GENERAL.EMAIL') }}</label>
-        <input id="email" v-model="state.email" type="email">
+        <input
+          id="email"
+          v-model="state.email"
+          type="email"
+          disabled
+        >
       </div>
       <!-- save button -->
-      <div class="col-span-4">
+      <!-- <div class="col-span-4">
         <div class="h-full flex justify-end items-end">
           <button class="btn btn-small">
             {{ $t('GENERAL.SAVE') }}
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

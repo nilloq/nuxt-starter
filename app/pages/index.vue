@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { loggedIn } = useUserSession()
-const toast = useToast()
 </script>
 
 <template>
@@ -16,6 +15,5 @@ const toast = useToast()
     <NuxtLink to="/todos" class="ml-8 btn">
       {{ $t('HOME.LINKS.TODOS') }}<span class="ml-2" :class="loggedIn ? 'i-carbon-unlocked' : 'i-carbon-locked'" />
     </NuxtLink>
-    <button class="btn ml-8" @click="toast.error('We\'ve just released Radix 3.0!')" />
   </div>
 </template>
