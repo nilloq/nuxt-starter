@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { version } from './package.json'
-import { pwa } from './app/config/pwa'
+// import { pwa } from './app/config/pwa'
 
 export default defineNuxtConfig({
 
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     'nuxt-viewport',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    '@vite-pwa/nuxt',
+    // '@vite-pwa/nuxt',
     '@nuxt/test-utils/module',
     'nuxt-auth-utils',
     '@nuxt/eslint',
@@ -103,5 +103,5 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.ts',
   },
 
-  pwa,
+  // pwa,
 })
