@@ -76,6 +76,8 @@ export const pwa: ModuleOptions = {
     // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
     periodicSyncForUpdates: 3600,
   },
+  registerWebManifestInRouteRules: true,
+  writePlugin: true,
   devOptions: {
     enabled: false,
     suppressWarnings: true,

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { version } from './package.json'
-import { pwa } from './pwa.config'
+import { pwa } from './app/config/pwa'
 
 export default defineNuxtConfig({
 
