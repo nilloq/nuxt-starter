@@ -54,7 +54,8 @@
     "TITLE": "Connexion",
     "DESCRIPTION": "Saisissez votre email pour accéder à votre compte",
     "SIGN_IN_GITHUB": "Connexion avec Github",
-    "EMAIL_PLACEHOLDER": "mail{'@'}domain.com"
+    "EMAIL_PLACEHOLDER": "mail{'@'}domain.com",
+    "ALERT": "Un compte existe déjà pour cet e-mail. Veuillez vous connecter et accéder aux paramètres de votre profil pour ajouter la prise en charge de nouveaux fournisseurs d'authentification."
   },
   "LOGOUT": {
     "TITLE": "Déconnexion",

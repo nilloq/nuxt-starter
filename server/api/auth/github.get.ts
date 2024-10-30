@@ -5,8 +5,6 @@ export default defineOAuthGitHubEventHandler({
   async onSuccess(event, { user: oauthUser, tokens }) {
     const { user: userSession } = await getUserSession(event)
 
-    console.log(oauthUser)
-
     // If the user is already signed in, link the account
     if (userSession?.id) {
       const user = await findUserById(userSession.id)
@@ -57,12 +55,7 @@ export default defineOAuthGitHubEventHandler({
     )
 
     if (user) {
-      await updateSession(event, {
-        password: useRuntimeConfig(event).session.password,
-      }, {
-        message: 'An existing account for this email already exists. Please login and visit your profile settings to add support for GitHub authentication.',
-      })
-      return sendRedirect(event, '/login')
+      return sendRedirect(event, '/login?alert=github')
     }
 
     // If the user is not signed in and no user exists with that GitHub ID or email address, create a new user
@@ -74,8 +67,6 @@ export default defineOAuthGitHubEventHandler({
       githubToken: tokens.access_token as string,
       verifiedAt: new Date().toUTCString(),
     })
-
-    console.log(createdUser)
 
     await updateUserSession(event, {
       id: createdUser.id,

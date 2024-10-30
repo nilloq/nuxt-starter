@@ -54,7 +54,8 @@
     "TITLE": "Login",
     "DESCRIPTION": "Enter your email below to login to your account",
     "SIGN_IN_GITHUB": "Sign in with Github",
-    "EMAIL_PLACEHOLDER": "mail{'@'}domain.com"
+    "EMAIL_PLACEHOLDER": "mail{'@'}domain.com",
+    "ALERT": "An existing account for this email already exists. Please login and visit your profile settings to add support for new authentication providers."
   },
   "LOGOUT": {
     "TITLE": "Logout",

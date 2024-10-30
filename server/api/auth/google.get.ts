@@ -52,12 +52,7 @@ export default defineOAuthGoogleEventHandler({
     )
 
     if (user) {
-      await updateSession(event, {
-        password: useRuntimeConfig(event).session.password,
-      }, {
-        message: 'An existing account for this email already exists. Please login and visit your profile settings to add support for Google authentication.',
-      })
-      return sendRedirect(event, '/login')
+      return sendRedirect(event, '/login?alert=google')
     }
 
     // If the user is not signed in and no user exists with that GoogleID or email address, create a new user

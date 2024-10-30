@@ -1,23 +1,18 @@
 <script lang="ts" setup>
-import { useSession } from 'h3'
+const { t } = useI18n()
 
-const message = useState<string>('message')
-if (import.meta.server) {
-  const session = await useSession(useRequestEvent()!, {
-    password: useRuntimeConfig().session.password,
-  })
+const message = ref()
 
-  message.value = session.data.message
+const route = useRoute()
 
-  await session.update({
-    message: '',
-  })
+if (route.query.alert) {
+  message.value = t('LOGIN.ALERT')
 }
 </script>
 
 <template>
   <div class="m-auto p-8 container">
-    <p v-if="message">
+    <p v-if="message" class="mx-auto max-w-sm mb-4 text-danger">
       {{ message }}
     </p>
     <div class="mx-auto max-w-sm rounded-lg p-4 border-base">

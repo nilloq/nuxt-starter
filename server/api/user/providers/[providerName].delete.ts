@@ -1,13 +1,11 @@
 export default defineEventHandler(async (event) => {
-  console.log('Delete event handler')
   const { user } = await requireUserSession(event)
 
   const providerName = getRouterParam(event, 'providerName')
-  console.log(providerName)
 
   // A user must have at least one provider linked
   const providers = (['google', 'github'] as const).filter(provider => user[`${provider}Id`])
-  console.log('User must have at least one provider linked' + providers)
+
   if (providers.length === 1) {
     throw createError({
       statusCode: 400,
