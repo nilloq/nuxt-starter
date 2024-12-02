@@ -81,6 +81,12 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-09-16',
 
+  nitro: {
+    imports: {
+      dirs: ['server/utils'],
+    },
+  },
+
   hub: {
     database: true,
   },

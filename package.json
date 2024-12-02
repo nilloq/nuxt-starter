@@ -32,7 +32,7 @@
     "better-sqlite3": "^11.6.0",
     "drizzle-orm": "^0.36.4",
     "h3-zod": "^0.5.3",
-    "nuxt": "^3.13.2",
+    "nuxt": "^3.14.1592",
     "nuxt-auth-utils": "^0.5.5",
     "nuxt-viewport": "^2.2.0",
     "radix-vue": "^1.9.10",
